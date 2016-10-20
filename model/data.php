@@ -8,6 +8,7 @@
     public $imageURL = "";
     public $imgId = 1;
     public $liens = array();
+    public $imagesURLS = array();
 
     function __construct()
     {

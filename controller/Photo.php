@@ -1,6 +1,6 @@
 <?php
 	require_once("model/imageDAO.php");
-  require_once("model/Data.php");
+  require_once("model/data.php");
 
 	class Photo {
 
@@ -71,25 +71,27 @@
 
 		private function setMenu($data)
 		{
-			if(isset($_GET['imgId']) && $_GET['imgId'] < $this->imageDAO->size()){
-				$nextId = $_GET['imgId'] + 1;
+			$id = $_GET['imgId'];
+			if(isset($id) && $id < $this->imageDAO->size()){
+				$nextId = $id + 1;
 			}else{
 				$nextId = 1;
 			}
 
-			if(isset($_GET['imgId']) && $_GET['imgId'] > 1){
-				$prevId = $_GET['imgId'] - 1;
+			if(isset($id) && $id > 1){
+				$prevId = $id - 1;
 			}else{
 				$prevId = 1;
 			}
 
 			$size=480;
+			$nbImg=1;
 
 			$data->menu['Home'] = "index.php";
 			$data->menu['A propos'] = "index.php?controller=Home&action=aPropos";
 			$data->menu['First'] = "index.php?controller=Photo&action=first&imgId=1";
 			$data->menu['Random'] = "index.php?controller=Photo&action=random";
-			$data->menu['More'] = "index.php?controller=&action=";
+			$data->menu['More'] = "index.php?controller=PhotoMatrix&action=index&imgId=" . $id . "&nbImg=" . $nbImg*2;
 			$data->menu['Zoom +'] = "index.php?controller=Photo&action=zoomIn";
 			$data->menu['Zoom -'] = "index.php?controller=Photo&action=zoomOut";
 
