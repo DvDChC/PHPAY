@@ -1,9 +1,9 @@
 <?php # mise en place de la vue partielle : le contenu central de la page
   # Mise en place des deux boutons
   print "<p>\n";
-  print "<a href=\"index.php?controller=Photo&action=prev\">Prev</a> ";
+  print "<a href=\"" . $data->liens['Prev'] . "\">Prev</a> ";
 
-  print "<a href=\"index.php?controller=Photo&action=next&imgId=" . $data->imgId . "\">Next</a>\n";
+  print "<a href=\"" . $data->liens['Next'] . "\">Next</a>\n";
   print "</p>\n";
 
   # Affiche l'image avec une reaction au click
