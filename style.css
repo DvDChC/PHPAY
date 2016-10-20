@@ -1,0 +1,40 @@
+body {  width: 90%;
+  font-family:"verdana", "arial", "sans-serif";  margin-left: auto; 
+  margin-right: auto; 
+  color: 	#2F4F4F;
+  border: 1px dotted navy;
+   }
+   
+#entete {
+ border-bottom: 1px dotted navy;
+}
+  
+  
+#menu {
+	margin-top: 5px;
+	width:15%;
+	float: left;}
+
+#menu h3 {
+	text-align:center;
+	}
+#menu a:link, a:visited, a:active {    
+  color: #483D8B; }
+  #menu a:hover {   color: #FFFFFF;  font-style: italic;   background-color: #99CCCC; }
+#corps{
+	margin-left:13%;
+	padding: 10px;
+	border-left: 1px dotted navy;
+	overflow:hidden;
+ }
+ 
+#corps a:link, a:visited, a:active {    
+  color: #483D8B; }
+  #corps a:hover {   color: #FFFFFF;  font-style: italic;   background-color: #99CCCC;
+  }
+#pied {
+	margin-top: 20px;
+	border: 1px dotted navy;
+	clear:left;
+  }
+  
