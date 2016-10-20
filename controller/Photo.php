@@ -33,7 +33,7 @@
     function next()
     {
 			if(isset($_GET['imgId'])){
-				$id = $_GET['imgId'] + 1;
+				$id = $_GET['imgId'];
 			}else{
 				$id = 1;
 			}
@@ -71,6 +71,20 @@
 
 		private function setMenu($data)
 		{
+			if(isset($_GET['imgId']) && $_GET['imgId'] < $this->imageDAO->size()){
+				$nextId = $_GET['imgId'] + 1;
+			}else{
+				$nextId = 1;
+			}
+
+			if(isset($_GET['imgId']) && $_GET['imgId'] > 1){
+				$prevId = $_GET['imgId'] - 1;
+			}else{
+				$prevId = 1;
+			}
+
+			$size=480;
+
 			$data->menu['Home'] = "index.php";
 			$data->menu['A propos'] = "index.php?controller=Home&action=aPropos";
 			$data->menu['First'] = "index.php?controller=Photo&action=first&imgId=1";
@@ -78,6 +92,9 @@
 			$data->menu['More'] = "index.php?controller=&action=";
 			$data->menu['Zoom +'] = "index.php?controller=Photo&action=zoomIn";
 			$data->menu['Zoom -'] = "index.php?controller=Photo&action=zoomOut";
+
+			$data->liens['Prev'] = "index.php?controller=Photo&action=next&imgId=" . $prevId . "&size=" . $size;
+			$data->liens['Next'] = "index.php?controller=Photo&action=next&imgId=" . $nextId . "&size=" . $size;
 		}
 		private function calculeNext($id)
 		{

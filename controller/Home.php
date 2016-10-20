@@ -18,7 +18,7 @@
 			$data->content = "homeView.php";
 			$data->menu['Home'] = "index.php";
 			$data->menu['A propos'] = "index.php?controller=Home&action=apropos";
-			$data->menu['Voir photos'] = "index.php?controller=Photo";
+			$data->menu['Voir photos'] = "index.php?controller=Photo&imgId=1";
 			require_once("view/mainView.php");
     }
 
@@ -29,7 +29,7 @@
 			$data->content = "aProposView.php";
 			$data->menu['Home'] = "index.php";
 			$data->menu['A propos'] = "index.php?controller=Home&action=apropos";
-			$data->menu['Voir photos'] = "index.php?controller=Photo";
+			$data->menu['Voir photos'] = "index.php?controller=Photo&imgId=1";
 			require_once("view/mainView.php");
     }
 }
