@@ -13,7 +13,7 @@
 			<h3>Menu</h3>
 			<ul>
 				<?php # Mise en place du menu par un parcours de la table associative
-					foreach($data->menu as $key => $item) {
+					foreach($this->data->menu as $key => $item) {
             echo "<a href=\"" . $item . "\" >" . $key . "</a><br />";
           }
 				?>
@@ -22,7 +22,7 @@
 
 		<div id="corps">
 			<?php
-        include($data->content);
+        include($this->data->content);
       ?>
 
 		<div id="pied_de_page">

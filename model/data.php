@@ -9,6 +9,8 @@
     public $imgId = 1;
     public $liens = array();
     public $imagesURLS = array();
+    public $size = 480;
+    public $nbImg = 1;
 
     function __construct()
     {
