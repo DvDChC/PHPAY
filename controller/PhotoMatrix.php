@@ -1,6 +1,6 @@
 <?php
 	require_once("model/imageDAO.php");
-	require_once("model/data.php");
+	require_once("model/Data.php");
 
 	class PhotoMatrix {
 
@@ -9,7 +9,7 @@
 
 		function __construct() {
       $this->imageDAO = new ImageDAO();
-			$this->data = new data();
+			$this->data = new Data();
 		}
 
 
@@ -23,7 +23,7 @@
 
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($id), $nbImg);
 			$this->data->content = "photoMatrixView.php";
-			$this->setMenu($this->data);
+			$this->setMenu();
 			require_once("view/mainView.php");
     }
 
@@ -36,19 +36,26 @@
 				$nb = 2;
 			}
 
-			// calcul du next
-			if(isset($_GET['imgId']) && $_GET['imgId']+$nb < $this->imageDAO->size()){
-				$nextId = $this->imageDAO->jumpToImage($this->imageDAO->getImage($_GET['imgId']), $nb);
+			if(isset($_GET['imgId'])){
+				$id = $_GET['imgId'];
 			}else{
-				$nextId = 1;
+				$id = 1;
 			}
+
+			// calcul du next
+			if($id + $nb < $this->imageDAO->size()){
+				$nextId = $this->imageDAO->jumpToImage($this->imageDAO->getImage($id), $nb);
+			}else{
+				$nextId = $nb - ($this->imageDAO->size() - $id);
+			}
+
 
 			$this->data->nbImg = $nb;
 			$this->data->imgId = $nextId;
 
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($nextId), $nb);
 			$this->data->content = "photoMatrixView.php";
-			$this->setMenu($this->data);
+			$this->setMenu();
 			require_once("view/mainView.php");
     }
 
@@ -61,11 +68,23 @@
 				$nb = 2;
 			}
 
+			if(isset($_GET['imgId'])){
+				$id = $_GET['imgId'];
+			}else{
+				$id = 1;
+			}
+
 			// calcul du prev
-			if(isset($_GET['imgId']) && $_GET['imgId'] - $nb > 1){
-				$prevId = $_GET['imgId'] - $nb;
+			if($id && $id - $nb > 1){
+				$prevId = $id - $nb;
 			}else{
 				$prevId = 1;
+			}
+
+			// calcul du nombre d'images avant 1 à afficher
+			if(($id - $nb) < 1){
+				$prevs = ($id - $nb) * (-1);
+				$prevId = $this->imageDAO->size() - $prevs;
 			}
 
 			$this->data->nbImg = $nb;
@@ -73,7 +92,7 @@
 
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($prevId), $nb);
 			$this->data->content = "photoMatrixView.php";
-			$this->setMenu($this->data);
+			$this->setMenu();
 			require_once("view/mainView.php");
     }
 
@@ -94,7 +113,7 @@
 
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($id), $nb);
 			$this->data->content = "photoMatrixView.php";
-			$this->setMenu($this->data);
+			$this->setMenu();
 			require_once("view/mainView.php");
     }
 
@@ -119,7 +138,7 @@
 
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($id), $nb);
 			$this->data->content = "photoMatrixView.php";
-			$this->setMenu($this->data);
+			$this->setMenu();
 			require_once("view/mainView.php");
     }
 
@@ -144,7 +163,7 @@
 
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($id), $nb);
 			$this->data->content = "photoMatrixView.php";
-			$this->setMenu($this->data);
+			$this->setMenu();
 			require_once("view/mainView.php");
     }
 
@@ -152,8 +171,8 @@
 		{
 			$this->data->menu['Home'] = "index.php";
 			$this->data->menu['A propos'] = "index.php?controller=Home&action=aPropos";
-			$this->data->menu['First'] = "index.php?controller=Photo&action=first&imgId=1";
-			$this->data->menu['Random'] = "index.php?controller=PhotoMatrix&action=random&imgId=" . $this->data->imgId . "&nbImg=" . $this->data->nbImg;
+			$this->data->menu['First'] = "index.php?controller=Photo&action=first";
+			$this->data->menu['Random'] = "index.php?controller=PhotoMatrix&action=random&nbImg=" . $this->data->nbImg;
 			$this->data->menu['More'] = "index.php?controller=PhotoMatrix&action=more&imgId=" . $this->data->imgId . "&nbImg=" . $this->data->nbImg;
 			$this->data->menu['Less'] = "index.php?controller=PhotoMatrix&action=less&imgId=" . $this->data->imgId . "&nbImg=" . $this->data->nbImg;
 

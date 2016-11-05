@@ -114,6 +114,23 @@
 				$res[] = $this->getImage($id);
 				$id++;
 			}
+
+			$debut = 1;
+			$fin = $this->size();
+
+			// si le tableau de résultat n'a pas autant d'images (début ou fin de la liste),
+			// on ajoute les premières ou dernières images en plus
+
+			while(count($res) < $nb){
+				if(($id + $nb) > $this->size()) {
+					$res[] = $this->getImage($debut);
+					$debut++;
+				}elseif($id < 1){
+					$res[] = $this->getImage($fin);
+					$fin--;
+				}
+			}
+
 			return $res;
 		}
 	}

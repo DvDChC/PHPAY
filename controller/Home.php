@@ -3,10 +3,11 @@
 
 	class Home
   {
+		public $data;
 
 		function __construct()
     {
-
+			$this->data = new Data();
 		}
 
 
@@ -14,22 +15,21 @@
     // Affichage de la page d'accueil
     function index()
     {
-			$data = new Data();
-			$data->content = "homeView.php";
-			$data->menu['Home'] = "index.php";
-			$data->menu['A propos'] = "index.php?controller=Home&action=apropos";
-			$data->menu['Voir photos'] = "index.php?controller=Photo&imgId=1";
+
+			$this->data->content = "homeView.php";
+			$this->data->menu['Home'] = "index.php";
+			$this->data->menu['A propos'] = "index.php?controller=Home&action=apropos";
+			$this->data->menu['Voir photos'] = "index.php?controller=Photo&imgId=1";
 			require_once("view/mainView.php");
     }
 
     // Affichage du "à propos"
     function apropos()
     {
-			$data = new Data();
-			$data->content = "aProposView.php";
-			$data->menu['Home'] = "index.php";
-			$data->menu['A propos'] = "index.php?controller=Home&action=apropos";
-			$data->menu['Voir photos'] = "index.php?controller=Photo&imgId=1";
+			$this->data->content = "aProposView.php";
+			$this->data->menu['Home'] = "index.php";
+			$this->data->menu['A propos'] = "index.php?controller=Home&action=apropos";
+			$this->data->menu['Voir photos'] = "index.php?controller=Photo&imgId=1";
 			require_once("view/mainView.php");
     }
 }
