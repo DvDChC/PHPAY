@@ -11,6 +11,8 @@
     public $imagesURLS = array();
     public $size = 480;
     public $nbImg = 1;
+    public $categories = array();
+    public $selectedCategory = "";
 
     function __construct()
     {

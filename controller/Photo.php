@@ -30,9 +30,10 @@
 			}
 
 			$this->data->size = $size;
+			$this->data->imgId = $id;
 			$this->data->imageURL = $this->imageDAO->getImage($id)->getPath();
 			$this->data->content = "photoView.php";
-			$this->data->imgId = $id;
+
 			$this->setMenu();
 			require_once("view/mainView.php");
     }
@@ -49,9 +50,10 @@
 			}
 
 			$this->data->size = $size;
+			$this->data->imgId = 1;
+
 			$this->data->imageURL = $this->imageDAO->getFirstImage()->getPath();
 			$this->data->content = "photoView.php";
-			$this->data->imgId = 1;
 			$this->setMenu();
 			require_once("view/mainView.php");
     }
@@ -79,8 +81,9 @@
 			}
 
 			$this->data->size = $size;
-			$this->data->imageURL = $this->imageDAO->getImage($id)->getPath();
 			$this->data->imgId = $id;
+
+			$this->data->imageURL = $this->imageDAO->getImage($id)->getPath();
 			$this->data->content = "photoView.php";
 			$this->setMenu();
 			require_once("view/mainView.php");

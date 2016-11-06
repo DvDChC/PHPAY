@@ -133,7 +133,42 @@
 
 			return $res;
 		}
+
+	// Retourne une liste des catégories d'images
+	function getCategories(){
+		$s = $this->db->query('SELECT DISTINCT category FROM image ORDER BY category ASC');
+		if ($s) {
+			$result = $s->fetchAll(PDO::FETCH_COLUMN, 0);
+			if($result){
+				return $result;
+			}else{
+				return $this->getImage(1);
+			}
+		} else {
+			print "Error in getCategories<br/>";
+			$err = $this->db->errorInfo();
+			print $err[2]."<br/>";
+		}
 	}
+
+	// Retourne la liste des images d'une catégorie
+	function getImagesFromCategory($category){
+		$s = $this->db->query('SELECT * FROM image WHERE category = \'' . $category . '\' ORDER BY id ASC');
+		if ($s) {
+			$s->setFetchMode(PDO::FETCH_CLASS,'image');
+			$result = $s->fetchAll();
+			if($result){
+				return $result;
+			}else{
+				return $this->getImage(1);
+			}
+		} else {
+			print "Error in getCategories<br/>";
+			$err = $this->db->errorInfo();
+			print $err[2]."<br/>";
+		}
+	}
+}
 
 	# Test unitaire
 	# Appeler le code PHP depuis le navigateur avec la variable test
