@@ -1,11 +1,11 @@
 body {
     width: 90%;
     font-family: "verdana", "arial", "sans-serif";
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     color: #fff;
     height: 90vh;
-    background-image: url("background.png");
+    background-image: url("view/img/background.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -14,7 +14,7 @@ body {
 
 #menu {
     margin-top: 5px;
-    width: 15%;
+    width: 25%;
     min-width: 130px;
     float: left;
 }
@@ -47,4 +47,20 @@ body {
     border: 1px dotted navy;
     clear: left;
 }
-  
+
+.titre-photo{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-variant: small-caps;
+}
+.arrows{
+    height: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.titre-cat{
+    font-style: italic;
+    font-size: 0.7em;
+}

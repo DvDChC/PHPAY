@@ -20,6 +20,11 @@
     {
       $cat = $this->getCategory();
 
+        if($cat == -1){
+            header("Location: index.php?controller=Photo&action=index");
+            exit;
+        }
+
       $images = $this->imageDAO->getImagesFromCategory($cat);
       $nb = count($images);
 

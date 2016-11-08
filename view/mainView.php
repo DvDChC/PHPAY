@@ -9,7 +9,23 @@
 		<div id="menu">
 			<h3>Menu</h3>
 			<ul>
-				<?php # Mise en place du menu par un parcours de la table associative
+				<?php if(isset($_GET['controller']) && $_GET['controller']!='Home' && $_GET['controller']!='home'): ?>
+					<form id="form_cat" method="post" action="index.php?controller=Category&action=index">
+						<select name="category" id="catgeory_select">
+							<option value="" disabled selected>Filtrer la catégorie</option>
+							<option value="-1">-- Aucune --</option>
+					<?php
+						foreach($this->imageDAO->getCategories() as $category){
+							print "<option value=\"" . $category . "\">" . $category . "</option>";
+						}
+					?>
+						</select>
+						<input type="submit" value="Go!">
+					</form>
+				<?php endif; ?>
+
+				<?php
+				# Mise en place du menu par un parcours de la table associative
 					foreach($this->data->menu as $key => $item) {
             echo "<a href=\"" . $item . "\" >" . $key . "</a><br />";
           }
@@ -21,7 +37,6 @@
 			<?php
         include($this->data->content);
       ?>
-
 		<div id="pied_de_page">
 			</div>
 		</body>

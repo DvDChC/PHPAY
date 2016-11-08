@@ -1,21 +1,12 @@
 <?php # mise en place de la vue partielle : le contenu central de la page
-  # Mise en place des deux boutons
-  print "<form method=\"post\" action=\"index.php?controller=Category&action=index\">";
-  print "<select name=\"category\" id=\"catgeory_select\" onchange=\"www.google.fr\"><option value=\"\" disabled selected>Filtrer par catégorie...</option>";
-  print "<option value=\"-1\">-- Aucune --</option>";
-  foreach($this->imageDAO->getCategories() as $category){
-    print "<option value=\"" . $category . "\">" . $category . "</option>";
-  }
-  print "</select> <input type=\"submit\" value=\"Go!\"></form>";
-
-  if(isset($this->category) && $this->category != ""){
-    print "<h1>" . $this->category . "</h1>";
-  }
 
   print "<p>\n";
-  print "<a href=\"" . $this->data->liens['Prev'] . "\">Prev</a> ";
+  print "<a href=\"" . $this->data->liens['Prev'] . "\"><img class=\"arrows\"  src=\"view/img/prev.png\" /></a> ";
+  if(isset($this->category) && $this->category != ""){
+    print "<span class='titre-photo'>" . $this->category . "</span>";
+  }
   // pre-calcul de la page d'images suivante
-  print "<a href=\"" . $this->data->liens['Next'] . "\">Next</a> ";
+  print "<a href=\"" . $this->data->liens['Next'] . "\"><img class=\"arrows\" src=\"view/img/next.png\" /></a> ";
   print "</p>\n";
 
   # Affiche de la matrice d'image avec une reaction au click
