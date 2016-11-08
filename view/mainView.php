@@ -6,9 +6,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css" media="screen" title="Normal" />
 		</head>
 	<body>
-		<div id="entete">
-			<h1>Site SIL3</h1>
-			</div>
 		<div id="menu">
 			<h3>Menu</h3>
 			<ul>
