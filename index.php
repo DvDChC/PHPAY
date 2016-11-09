@@ -1,4 +1,5 @@
 <?php
+  session_start();
   # Controleur frontal (front controler)
 
   # En fonction du controleur et de l'action en parametre lance le bon traitement

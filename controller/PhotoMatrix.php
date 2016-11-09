@@ -161,6 +161,11 @@
 			$this->data->nbImg = $nb;
 			$this->data->imgId = $id;
 
+            if($nb == 1){
+                header("Location: index.php?controller=Photo&action=index&imgId=" . $this->data->imgId);
+                exit;
+            }
+
 			$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($id), $nb);
 			$this->data->content = "photoMatrixView.php";
 			$this->setMenu();
