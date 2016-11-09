@@ -1,6 +1,6 @@
 <?php
 	require_once("model/imageDAO.php");
-  require_once("model/Data.php");
+  require_once("model/data.php");
 
 	class Photo {
 
