@@ -249,6 +249,35 @@ class Photo
         require_once("view/mainView.php");
     }
 
+    public function delComment(){
+        if (isset($_GET['commentId'])) {
+            $commentId = $_GET['commentId'];
+
+            $this->commentDAO->deleteComment($commentId);
+        }
+
+        // récupère la taille
+        if (isset($_GET['size'])) {
+            $size = $_GET['size'];
+        } else {
+            $size = 480;
+        }
+
+        // récupère l'id
+        if (isset($_GET['imgId'])) {
+            $id = $_GET['imgId'];
+        } else {
+            $id = 1;
+        }
+
+        $this->data->imgId = $id;
+        $this->data->commentaires = $this->commentDAO->getComments($id);
+        $this->data->imageURL = $this->imageDAO->getImage($id)->getPath();
+        $this->data->content = "photoView.php";
+        $this->setMenu();
+        require_once("view/mainView.php");
+    }
+
     private function setMenu()
     {
         $this->data->menu['Home'] = "index.php";

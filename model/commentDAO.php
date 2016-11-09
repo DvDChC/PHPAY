@@ -43,7 +43,16 @@ class commentDAO
     # Sauvegarde le commentaire en base de données
     function addComment($imgId, $commentaire, $authorId){
         $commentaire = str_replace("'", "''", $commentaire);
+        $commentaire = htmlentities($commentaire);
         $s = $this->db->prepare("INSERT INTO commentaire(image_id, comment, author_id) VALUES ('".$imgId."', '".$commentaire."', '".$authorId."')");
         $s->execute();
+    }
+
+    # Supprime un commentaire
+    function deleteComment($id){
+        $s = $this->db->prepare("DELETE FROM commentaire WHERE id =" .$id);
+        if($s){
+            $s->execute();
+        }
     }
 }

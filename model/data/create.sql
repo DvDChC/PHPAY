@@ -8,13 +8,13 @@ comment varchar(1024)
 );
 
 CREATE TABLE user (
-id int primary key,
+id integer primary key,
 login varchar(255),
 password varchar(255)
 );
 
 CREATE TABLE commentaire (
-id int primary key,
+id INTEGER primary key autoincrement,
 image_id int(11),
 comment varchar(2056),
 author_id int(11),

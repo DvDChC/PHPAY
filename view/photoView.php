@@ -15,13 +15,18 @@ print "<img src=\"" . $this->data->imageURL . "\" width=\"" . $this->data->size 
 print "</a>\n";
 print "<div class='commentaires' style='width:" . $this->data->size . "px;'>";
 foreach ($this->data->commentaires as $com) {
-    print "<div class=\"com\"><h2>" . $com->getAuthor() . " :</h2><br />" . $com->getComment() . "</div>";
+    print "<div class=\"com\"><h2>" . $com->getAuthor() . " :</h2><br />" . $com->getComment();
+    //    Si l'utilisateur courant = l'Admin du site, il voit l'action supprimer
+    if(isset($_SESSION['id']) && $_SESSION['id'] == 2)
+        print "<a href=\"index.php?controller=Photo&action=delComment&imgId=".$this->data->imgId."&size=".$this->data->size."&commentId=".$com->getId()."\"><img src=\"view/img/delete.png\" title='Supprimer ce commentaire' /></a>";
+    print "</div>";
 }
 if(isset($_SESSION['id'])){
     $id = $_SESSION['id'];
 }else{
     $id = 1;
 }
+
 print "<div id=\"ajout-com\"><form id=\"form_com\" method=\"post\" action=\"index.php?controller=Photo&action=addComment&imgId=".$this->data->imgId."&author=". $id ."\">
                 <label for='comment'>Ajoutez votre commentaire...</label><br />
                 <textarea name='comment' required style='width: 100%;'></textarea>
