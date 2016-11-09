@@ -94,27 +94,6 @@ class Category
         require_once("view/mainView.php");
     }
 
-    // Affichage d'une matrice d'images à partir d'une image aléatoire
-    // function random()
-    // {
-    // 	if(isset($_GET['nbImg'])){
-    // 		$nb = $_GET['nbImg'];
-    // 	}else{
-    // 		$nb = 2;
-    // 	}
-    //
-    // 	// tire un ID au hasard
-    // 	$id = $this->imageDAO->getRandomImage();
-    //
-    // 	$this->data->imgId = $id;
-    // 	$this->data->nbImg = $nb;
-    //
-    // 	$this->data->imagesURLS = $this->imageDAO->getImageList($this->imageDAO->getImage($id), $nb);
-    // 	$this->data->content = "photoMatrixView.php";
-    // 	$this->setMenu();
-    // 	require_once("view/mainView.php");
-    // }
-
     private function setMenu()
     {
         $this->data->menu['Home'] = "index.php";
